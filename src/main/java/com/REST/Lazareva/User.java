@@ -27,7 +27,10 @@ public class User {
     public String Password() {
         return password;
     }
-   // public LocalDate CurrentDate() {return currentDate;}
 
+    public boolean newEquals(User user) {
+        if (user.login == this.login || user.password == this.password) return true;
+        return false;
+    }
 
 }

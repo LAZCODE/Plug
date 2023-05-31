@@ -1,13 +1,10 @@
 package com.REST.Lazareva;
 
-import java.time.LocalDate;
-
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
+
+
 @RestController
 public class UserController {
 
@@ -17,7 +14,14 @@ public class UserController {
     }
 
     @PostMapping("/user")
-    public User user(User postUser) {
-        return (new User(postUser.Login(), postUser.Password()));
+    public User user(@RequestBody User postUser) throws ServiceException {
+        if (!postUser.newEquals(new User())) {
+            return new User(postUser.login, postUser.password);
+        }
+        else
+            throw new ServiceException("The JSON file doesn't contain right variables");
+        }
+
     }
-}
+
+
