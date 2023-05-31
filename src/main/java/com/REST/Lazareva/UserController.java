@@ -3,7 +3,6 @@ package com.REST.Lazareva;
 import java.time.LocalDate;
 
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,11 +16,8 @@ public class UserController {
         return new User();
     }
 
-
-    //@PostMapping(consumes = {MediaType.APPLICATION_JSON_VALUE}){};
     @PostMapping("/user")
-    public ResponseEntity<User> create(@RequestBody User postUser) {
-        System.out.println(postUser);
-        return new ResponseEntity<>(new User(postUser.Login(), postUser.Password()), HttpStatus.OK);
+    public User user(User postUser) {
+        return (new User(postUser.Login(), postUser.Password()));
     }
 }

@@ -27,9 +27,7 @@ public class User {
     public String Password() {
         return password;
     }
-    public LocalDate CurrentDate() {
-        return currentDate;
-    }
+   // public LocalDate CurrentDate() {return currentDate;}
 
 
 }
